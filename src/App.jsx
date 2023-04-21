@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route,Routes } from 'react-router-dom';
 import './App.css'
-import Home from '../src/pages/home'
+import Home from './pages/home'
 import Movies from './pages/movies'
 import Navbar from './components/navbar';
 import Tv from './pages/TV'
+import SearchMovie from './pages/SearchMovie';
 import { QueryClientProvider,QueryClient } from 'react-query'
 import {useDispatch,useSelector} from 'react-redux'
 import {SET_HMMOVIE, SET_MOVIE} from '../src/store';
@@ -62,6 +63,11 @@ function App() {
               path='/tv'
               element={<Tv/>}
               />
+               <Route
+              path='/search'
+              element={<SearchMovie/>}
+              />
+              
           </Routes>
         </QueryClientProvider>
      

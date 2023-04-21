@@ -36,9 +36,6 @@ export default function movies() {
    };
 
     if(movies){
-          
-          // console.log(loading)
-          // console.log(dicover.results)
           return (
                <div className='w-full h-full relative '>
                <div className='flex   w-screen ml-14 flex-wrap  '>
@@ -46,18 +43,13 @@ export default function movies() {
                    <div className='mx-8 my-4'> 
                   <MovieCard  key={movie.id} value={movie}/>
                   </div>
-               ))}   
-                    
-                     
+               ))}      
                </div>
                <div className='flex w-screen  ' > 
                       <Pagination className=' w-full mx-auto bg-white  h-8  transparent items-center rounded-xl' count={100} page={currentPage} style={{width:'359px'}} onChange={handlePaginationChange}  color="primary"/> 
                     </div>
                </div>
            )
-                 
-         
-
     }else{
      return <><h1>loading....</h1></>
     
