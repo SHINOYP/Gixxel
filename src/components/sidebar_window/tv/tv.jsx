@@ -1,12 +1,12 @@
-import './tv_style.css'
+import './tv_style.sass'
 import React from 'react';
 
 
  const AddnewCourse=(props)=>{
     return(props.trigger)?(
-        <div className="popup flex flex-col">
-            <h1 className='w-full ml-4 text-xl font-normal'>TV SHOW</h1>
-            <div className='popup-inner rounded-xl backdrop-blur-md '>
+        <div className="tv-popup">
+            <h1 className='tv-popup-h1'>TV SHOW</h1>
+            <div className=' '>
                 
                 {props.children}
             </div>

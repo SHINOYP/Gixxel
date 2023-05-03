@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import play from '../assets/play.svg'
-import cinema from '../assets/cinema.svg'
-import tv from '../assets/tv.svg'
-import Btn_fs from '../assets/first.svg'
-import Popup from './sidebar_window/movie'
-import Popup2 from './sidebar_window/tv'
+import play from '../../assets/play.svg'
+import cinema from '../../assets/cinema.svg'
+import tv from '../../assets/tv.svg'
+import Btn_fs from '../../assets/first.svg'
+import Popup from '../sidebar_window/movie/movie'
+import Popup2 from '../sidebar_window/tv/tv'
 import { useRef,useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import './navbarStyle.sass'
 
-
-export default function navbar() {
+export default function Navbar() {
     const navigate = useNavigate();
     const [buttonPopup,setButtonPopup]=useState(false);
     const [buttonPopup2,setButtonPopup2]=useState(false);
@@ -45,8 +45,8 @@ export default function navbar() {
    
   return (
     <div ref={myRef} >
-    <nav  className="bg-black flex text-white  h-screen z- fixed z-10 bg-opacity-30" style={{width:'56px'}}>
-        <div className='flex flex-col items-center justify-start'>
+    <nav  >
+        <div className='flex flex-col items-center justify-start absolute'>
          
             <button className="my-10 hover:bg-gray-300"  >
                 <img src={play} />
@@ -73,7 +73,7 @@ export default function navbar() {
         onClick={() => {
             navigate('/movies', { state: { myProp: 28 } });
           }}
-        className="relative inline-flex items-center justify-center p-0.5 mb-4 mr-2 overflow-hidden text-sm font-medium text-gray-900  rounded-full  group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+        className="button-85   relative inline-flex items-center justify-center p-0.5 mb-4 mr-2 overflow-hidden text-sm font-medium text-gray-900  rounded-full  group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
             <span className="relative px-28 py-3 rounded-full  transition-all ease-in duration-75 bg-white dark:bg-gray-800   group-hover:bg-opacity-0">
                 Action
             </span>
@@ -163,7 +163,7 @@ export default function navbar() {
             navigate('/movies', { state: { myProp: 878 } });
           }}
 
-        className="relative inline-flex items-center justify-center p-0.5 mb-4 mr-2 overflow-hidden text-sm font-medium text-gray-900  rounded-full  group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+        className="button-85">
             <span className="relative pl-20 pr-24 py-3 rounded-full  transition-all ease-in duration-75 bg-white dark:bg-gray-800   group-hover:bg-opacity-0">
             Science Fiction
             </span>

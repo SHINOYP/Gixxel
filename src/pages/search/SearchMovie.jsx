@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import MovieCard from '../components/movieCard';
+import MovieCard from '../../components/movieCard/movieCard';
+import './smStyle.sass'
+import { Triangle } from 'react-loader-spinner'
 
 export default function SearchMovie() {
   const [movies,setMovies]=useState([])
   const location=useLocation();
   useEffect(()=>{
     setMovies(location.state.result.results)
-    console.log(movies)
+
   },[])
   
   if(movies){
     return (
-         <div className='w-full h-full relative '>
-            <div className='flex   w-screen ml-14 flex-wrap  '>
+         <div className='sm '>
+            <div className='sm-main'>
             {movies && movies.map((movie)=>(
-                <div className='my-4'> 
+                <div className='sm-card-contain'> 
                 <MovieCard  key={movie.id} value={movie}/>
                 </div>
             ))}      
@@ -24,7 +26,18 @@ export default function SearchMovie() {
          </div>
      )
     }else{
-    return <><h1>loading....</h1></>
+    return(
+    <div className='loading'>
+      <Triangle
+        height="80"
+        width="80"
+        radius="9"
+        color="white"
+        ariaLabel="loading"
+        wrapperStyle
+        wrapperClass
+      />
+    </div>)
 
     }
   

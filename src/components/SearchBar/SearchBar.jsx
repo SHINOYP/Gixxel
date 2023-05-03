@@ -1,33 +1,39 @@
 import React,{useState} from 'react'
 import { Navigate,useNavigate } from 'react-router-dom';
-
+import './sbStyle.sass'
 
 
 export default function SearchBar() {
   const navigate= useNavigate();
   const [query,setQuery]=useState("");
   const [search,setSearch]=useState([]);
+  const [error,setError]=useState('')
 
   const handleInputChange=(event)=>{
     setQuery(event.target.value);
   }
   const handleSearchMovie=async()=>{
-    const response=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=af303dcb7ba62163922f8128770e6c9a&language=en-US&query=${query}&page=1&include_adult=false`,
-    {method:"GET"})
-
-    if(response.ok){
-      const result=await response.json()
-      setSearch(result);
-      navigate('/search',{state:{result}});
+    if(query===''){
+      console.log(query)
+      setError("Enter a name")
     }else{
-      
-    }
+      const response=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=af303dcb7ba62163922f8128770e6c9a&language=en-US&query=${query}&page=1&include_adult=false`,
+      {method:"GET"})
+
+      if(response.ok){
+        const result=await response.json()
+        setSearch(result);
+        navigate('/search',{state:{result}});
+      }else{
+        
+      }
+   } 
   }
   return (
-    <div className="pt-2 absolute mx-auto text-2xl  text-white z-20" style={{bottom:'850px',right:'160px'}}>
-        <input value={query} onChange={handleInputChange} className="border-4 border-white  bg-transparent  h-12 px-8 pr-16 rounded-full text-sm focus:outline-none"
-        type="search" name="search" placeholder="Search"/>
-        <button onClick={handleSearchMovie} type="submit" class="absolute right-0 top-0 mt-6 mr-4">
+    <div className="sb">
+        <input value={query} onChange={handleInputChange} 
+        type="search" name="search" placeholder={error? error:'Search'} />
+        <button onClick={handleSearchMovie} type="submit" >
         <svg className="text-white h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
             viewBox="0 0 56.966 56.966"  xml:space="preserve"

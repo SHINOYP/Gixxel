@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { Route,Routes } from 'react-router-dom';
-import './App.css'
-import Home from './pages/home'
-import Movies from './pages/movies'
-import Navbar from './components/navbar';
-import Tv from './pages/TV'
-import SearchMovie from './pages/SearchMovie';
+import Home from './pages/home/home'
+import Movies from './pages/movies/movies'
+import Navbar from './components/navbar/navbar';
+import Tv from './pages/tv/TV'
+import SearchMovie from './pages/search/SearchMovie';
 import { QueryClientProvider,QueryClient } from 'react-query'
 import {useDispatch,useSelector} from 'react-redux'
 import {SET_HMMOVIE, SET_MOVIE} from '../src/store';
-
+import { Triangle } from 'react-loader-spinner'
 function App() {
   const dispatch=useDispatch();
 
@@ -75,8 +74,19 @@ function App() {
   )
   }
   else{
-    return <h1>loading.....</h1>
-  }
+    return(
+      <div className='loading'>
+        <Triangle
+          height="80"
+          width="80"
+          radius="9"
+          color="white"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+    </div>
+    )};
 }
 
 export default App

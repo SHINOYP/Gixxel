@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
-import  {SET_GENRE} from '../store';
-import MovieCard from '../components/movieCard'
+import  {SET_GENRE} from '../../store';
+import MovieCard from '../../components/movieCard/movieCard'
 import Pagination from '@mui/material/Pagination';
+import './tvStyle.sass'
 
 export default function movies() {
     const [loading,setLoading]=useState(false)
@@ -15,13 +16,13 @@ export default function movies() {
  
     useEffect(()=>{
         setLoading(true)
-        console.log(myProp)
+       
             
         const fetchSomething=async()=>{
             const response=await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=af303dcb7ba62163922f8128770e6c9a&with_genres=${myProp}&page=${currentPage}`,
             {method:'GET'})
             const result=await response.json()
-            console.log(result)
+           
             setMovies(result.results);
             setTotalPages(result.total_pages);
         }   
@@ -37,16 +38,16 @@ export default function movies() {
 
     if(movies){
           return (
-               <div className='w-full h-full relative '>
-               <div className='flex   w-screen ml-14 flex-wrap  '>
+               <div className='tv-'>
+               <div className='tv-main  '>
                {movies && movies.map((movie)=>(
-                   <div className='mx-8 my-4'> 
+                   <div className='tv-card-contain'> 
                   <MovieCard  key={movie.id} value={movie}/>
                   </div>
                ))}      
                </div>
-               <div className='flex w-screen  ' > 
-                      <Pagination className=' w-full mx-auto bg-white  h-8  transparent items-center rounded-xl' count={100} page={currentPage} style={{width:'359px'}} onChange={handlePaginationChange}  color="primary"/> 
+               <div className='tv-page-contain ' > 
+                      <Pagination className='tv-page-component' count={100} page={currentPage} style={{width:'359px'}} onChange={handlePaginationChange}  color="primary"/> 
                     </div>
                </div>
            )
