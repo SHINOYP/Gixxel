@@ -24,10 +24,10 @@ export default function tvshow() {
                         slidesPerView={2}
                           breakpoints={{
                             0: {
-                              spaceBetween:300,
+                              spaceBetween:-120,
                             },
                             400:{
-                              spaceBetween:200,
+                              spaceBetween:-150,
                             },
                             639: {
                               spaceBetween:-100,
