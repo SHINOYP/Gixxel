@@ -2,14 +2,23 @@
     display: flex
     position: relative
     flex-direction: column
-    margin-right: 5ren
     background-color: black
+    overflow: hidden
     height: 440px
     width: 292px
+
+    &:hover
+        img
+            transform: scale(1.1)
 
     @media(max-width:767px)
         height: 180px
         width: 120px
 
     img
-        height: 100%
+        transition: all 0.3s
+        max-width: 100%
+        width: 100%
+        height: auto
+        display: block
+        transform: scale(1)

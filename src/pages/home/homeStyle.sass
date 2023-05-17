@@ -1,4 +1,4 @@
-$dark-mode-background-color: #333
+$dark-mode-background-color: #1D1D1D
 
 .swiper-slide img
     width: 100vw
@@ -15,13 +15,22 @@ $dark-mode-background-color: #333
 .home-main
     width: 100vw
     display: flex
+    position: fixed
+    top: 0
+
+.home-content
+    margin-top: 788px
+    background-color: $dark-mode-background-color
+    position: relative
+    @media(max-width:1000px)
+        margin-top: 40vh
 
 .home-slider-h1
     position: absolute
     top: 21rem
     max-width: 80%
-    font-size: 3rem
-    font-weight: 600
+    font-size: 3.5rem
+    font-weight: 500
     line-height: 1.5
     color: black
     left: 10rem
@@ -69,8 +78,8 @@ $dark-mode-background-color: #333
         font-weight: 500
 
 .home-slider-rating
-    top: -14.7rem
-    left: 18rem
+    top: -22rem
+    left: 10rem
     position: relative
     backdrop-filter: blur(1px)
 
@@ -79,8 +88,9 @@ $dark-mode-background-color: #333
         top: -6rem
 
 .home-slider-p
-    font-size: 0.875rem
-    line-height: 15px
+    font-weight: 400
+    font-size: 16px
+    line-height: 30px
     width: 50%
     position: relative
     top: -230px

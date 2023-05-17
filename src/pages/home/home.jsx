@@ -8,11 +8,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
-import { Autoplay, Pagination, Navigation, FreeMode } from "swiper";
+import { EffectFade,Autoplay, Pagination, Navigation, FreeMode } from "swiper";
 import Footer from "../../components/Footer/Footer";
 import Rating from "@mui/material/Rating";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./homeStyle.sass";
+
 
 const home = () => {
   const IMG_URL = import.meta.env.VITE_IMG_URI;
@@ -34,116 +35,43 @@ const home = () => {
   }, [dispatch]);
 
   const movies = dicover.results;
-
+  console.log(dicover)
   return (
     <div className="home">
       <div className=" home-main">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
+          // effect={"fade"}
           autoplay={{
-            delay: 6500,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[EffectFade,Autoplay, Pagination, Navigation]}
         >
-          <SwiperSlide>
-            <img src={IMG_URL + dicover?.results[0].backdrop_path} />
-            <h1 className="home-slider-h1 ">{dicover?.results[0].title}</h1>
-            <span className="home-slider-date">
-              {dicover?.results[0].release_date} |{" "}
-            </span>
-            <span className="home-slider-lan">
-              {dicover?.results[0].original_language}{" "}
-            </span>
-            <Rating
-              className="home-slider-rating"
-              sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-              value={dicover?.results[0].vote_average / 2}
-              precision={0.5}
-              readOnly
-            />
-            <p className="home-slider-p">{dicover?.results[0].overview}</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={IMG_URL + dicover?.results[1].backdrop_path} />
-            <h1 className="home-slider-h1 ">{dicover?.results[1].title}</h1>
-            <span className="home-slider-date">
-              {dicover?.results[1].release_date} |
-            </span>
-            <span className="home-slider-lan">
-              {dicover?.results[1].original_language}{" "}
-            </span>
-            <Rating
-              className="home-slider-rating"
-              sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-              value={dicover?.results[1].vote_average / 2}
-              precision={0.5}
-              readOnly
-            />
-            <p className="home-slider-p">{dicover?.results[0].overview}</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={IMG_URL + dicover?.results[2].backdrop_path} />
-            <h1 className="home-slider-h1">{dicover?.results[2].title}</h1>
-            <span className="home-slider-date">
-              {dicover?.results[2].release_date} |
-            </span>
-            <span className="home-slider-lan">
-              {dicover?.results[2].original_language}{" "}
-            </span>
-            <Rating
-              className="home-slider-rating"
-              sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-              value={dicover?.results[2].vote_average / 2}
-              precision={0.5}
-              readOnly
-            />
-            <p className="home-slider-p">{dicover?.results[0].overview}</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={IMG_URL + dicover?.results[3].backdrop_path} />
-            <h1 className="home-slider-h1">{dicover?.results[3].title}</h1>
-            <span className="home-slider-date">
-              {dicover?.results[3].release_date} |
-            </span>
-            <span className="home-slider-lan">
-              {dicover?.results[3].original_language}{" "}
-            </span>
-            <Rating
-              className="home-slider-rating"
-              sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-              value={dicover?.results[3].vote_average / 2}
-              precision={0.5}
-              readOnly
-            />
-            <p className="home-slider-p">{dicover?.results[0].overview}</p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={IMG_URL + dicover?.results[4].backdrop_path} />
-            <h1 className="home-slider-h1">{dicover?.results[4].title}</h1>
-            <span className="home-slider-date">
-              {dicover?.results[4].release_date} |
-            </span>
-            <span className="home-slider-lan">
-              {dicover?.results[4].original_language}{" "}
-            </span>
-            <Rating
-              className="home-slider-rating"
-              sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-              value={dicover?.results[4].vote_average / 2}
-              precision={0.5}
-              readOnly
-            />
-            <p className="home-slider-p">{dicover?.results[0].overview}</p>
-          </SwiperSlide>
+          {dicover?.results.slice(0, 8).map((item) => (
+            <SwiperSlide>
+              <img src={IMG_URL + item.backdrop_path} />
+              <h1 className="home-slider-h1 ">{item.title}</h1>
+              <span className="home-slider-date">{item.release_date} | </span>
+              <span className="home-slider-lan">{item.original_language} </span>
+              <Rating
+                className="home-slider-rating"
+                sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
+                value={item.vote_average / 2}
+                precision={0.5}
+                readOnly
+              />
+              <p className="home-slider-p">{dicover?.results[0].overview}</p>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <SearchBar />
       </div>
-
+      <div className="home-content">
       <div className="home-trending-head ">
         <div className="home-trending-head-main">
           <h1>Trending</h1>
@@ -248,14 +176,15 @@ const home = () => {
           </Swiper>
         </div>
       </div>
-      <div className="mt-0 sm:mt-2 lg:flex flex-col  ml-2 sm:ml-16">
-        <div className="w-full flex h-10 sm:h-14">
-          <h1 className="my-auto sm:ml-10 ml-1  text-xs sm:text-xl">TV shows</h1>
+      <div className="home-trending-head ">
+        <div className="home-trending-head-main">
+          <h1>TV Shows</h1>
         </div>
-        <Tv />
+       <Tv/>
       </div>
 
       <Footer />
+      </div>
     </div>
   );
 };

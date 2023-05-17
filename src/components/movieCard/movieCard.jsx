@@ -7,7 +7,7 @@ export default function movieCard(props) {
    
   return (
     <div className='mvcard' >
-        <img  src={IMG_URL+props.value.poster_path}/>
+        <img   src={IMG_URL+props.value.poster_path}/>
     </div>
   )
 }

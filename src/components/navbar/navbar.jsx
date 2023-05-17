@@ -48,7 +48,7 @@ export default function Navbar() {
     <nav  >
         <div className='flex flex-col items-center justify-start absolute'>
          
-            <button className="my-10 hover:bg-gray-300"  >
+            <button onClick={()=>navigate('/')} className="my-10 hover:bg-gray-300"  >
                 <img src={play} />
             </button> 
       
