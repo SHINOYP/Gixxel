@@ -1,13 +1,23 @@
 .sm
-    width: 100%
-    height: 100%
     position: relative
-
+    overflow: hidden
 .sm-main
     display: flex
-    width: 100vw
+    width: 100%
+    margin-inline: auto
     margin-left: 3.5rem
     flex-wrap: wrap
+    overflow: hidden
+    @media(max-width:1000px)
+        display: flex
+        margin-left: 0px
+        margin-inline: auto
 
 .sm-card-contain
+    overflow: hidden
     margin-block: 1rem
+    @media(max-width:1000px)
+        display: flex
+        height: 100%
+        margin-block: 1rem
+        margin-left: 3rem

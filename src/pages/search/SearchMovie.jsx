@@ -15,10 +15,10 @@ export default function SearchMovie() {
   if (movies) {
     return (
       <div className="sm ">
-        <div className="sm-main">
+        <div className="sm-main  mx-auto">
           {movies &&
             movies.map((movie) => (
-              <div className="sm-card-contain">
+              <div className="sm-card-contain ">
                 <MovieCard key={movie.id} value={movie} />
               </div>
             ))}
