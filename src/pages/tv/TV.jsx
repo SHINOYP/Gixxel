@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_GENRE } from "../../store";
+import { SET_GENRE } from "../../services/store";
 import MovieCard from "../../components/movieCard/movieCard";
 import Pagination from "@mui/material/Pagination";
 import "./tvStyle.sass";

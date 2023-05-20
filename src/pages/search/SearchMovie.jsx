@@ -15,7 +15,7 @@ export default function SearchMovie() {
   if (movies) {
     return (
       <div className="sm ">
-        <div className="sm-main  mx-auto">
+        <div className="sm-main  sm:ml-20 mx-auto">
           {movies &&
             movies.map((movie) => (
               <div className="sm-card-contain ">
