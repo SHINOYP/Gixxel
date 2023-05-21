@@ -1,0 +1,95 @@
+.details
+    position: relative
+    background-color: black
+    span
+        color: gray
+.details-backdrop
+    height: 50vh
+    width: 100vw
+.details-main
+    display: flex
+    position: absolute
+    width: 100vw
+    height: 20vh
+    margin-top: 15vh
+    top: 0
+    background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,5))
+
+.details-count
+    display: flex
+    justify-content: space-evenly
+    margin-right: 40%
+    margin-block: 1rem
+    font-size: 13px
+    background-color: black
+.details-reco
+    display: flex
+    flex-direction: column
+    height: 100%
+    width: 100%
+    background-color: black
+    position: relative
+    top: -15vh
+    padding-inline: 8rem
+
+.details-content
+    padding-inline: 2rem
+    width: 60%
+    h3
+        margin-top: 1rem
+
+    p
+        margin-top: 1rem
+
+.details-poster
+    h6
+        display: flex
+        margin-left: 1%
+
+.details-btns
+    display: flex
+    flex-direction: column
+    max-width: 200px
+    padding-top: 10rem
+
+@media (max-width:1000px)
+    .detail-main
+        margin-top: 13vh
+    .details-content
+        padding-inline: 1rem
+        width: 70%
+
+        h3
+            margin-top: 0.5rem
+            font-size: 9px
+
+        p
+            margin-top: 0.5rem
+            font-size: 8px
+    .details-count
+        margin-right: 10%
+        font-size: 8px
+    .details-reco
+        padding-inline: 1rem
+        top: -16vh
+    .details-btns
+        display: none
+
+.details-back
+    position: absolute
+    margin: 1rem
+    color: black
+    background-color: white
+    border-radius: 100%
+    &:hover
+        background-color: red
+
+.similar
+    margin-top: 14rem
+    background-color: black
+    margin-left: -8rem
+
+.similar-h1
+    font-size: 2rem
+    padding-left: 2rem
+    padding-block: 2rem

@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
-import MovieCard from "../../components/movieCard/movieCard";
-import "./smStyle.sass";
+import MovieCard from "../../components/movieCard/movieCard"
+import "../search/smStyle.sass";
 import Layout from "../../components/Layout/Layout";
+import { fetchMovie } from "../../services";
 
-export default function SearchMovie() {
+
+export default function MobileMovie() {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
   const navigate=useNavigate()
-  useEffect(() => {
-    setMovies(location.state.result.results);
+  useEffect(() => { 
+    fetchMovie().then((data)=>{
+        setMovies(data.results)
+        console.log(data)
+    })
+     console.log(movies)
   }, []);
 
   if (movies) {

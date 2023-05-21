@@ -6,9 +6,12 @@ import { SET_HMMOVIE, SET_MOVIE, SET_TV } from "./services/store";
 import { fetchMovie, fetchTrending, fetchTvShow } from "./services/index";
 import Home from "./pages/home/home";
 import Movies from "./pages/movies/movies";
-import Navbar from "./components/navbar/navbar";
 import Tv from "./pages/tv/TV";
+import MobileMovie from "./pages/Mobile/movies";
+import MobileTv from "./pages/Mobile/tv"
 import SearchMovie from "./pages/search/SearchMovie";
+import MovieDetails from "./pages/MovieDetails/movieDetails";
+import Animation from "./pages/Mobile/animation";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,12 +33,17 @@ function App() {
   if (content) {
     return (
       <div className="App flex h-screen w-screen z-0">
-        <Navbar />
+       
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:gid" element={<Movies />} />
           <Route path="/tv" element={<Tv />} />
           <Route path="/search" element={<SearchMovie />} />
+          <Route path="/:mid" element={<MovieDetails />} />
+          {/* Mobile Only Pages */}
+          <Route path="/Movies" element={<MobileMovie  />} />
+          <Route path="/MTv" element={<MobileTv/>} />
+          <Route path="/Animation" element={<Animation/>} />
         </Routes>
       </div>
     );

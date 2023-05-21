@@ -10,18 +10,20 @@ $dark-mode-background-color: #1D1D1D
 
 .home
     position: relative
-    height: 100%
-
+    color: white
+    background-color: $dark-mode-background-color
 .home-main
     width: 100vw
     display: flex
     position: fixed
     top: 0
+    background-color: $dark-mode-background-color
 
 .home-content
     margin-top: 788px
     background-color: $dark-mode-background-color
     position: relative
+    width: 100vw
     @media(max-width:1000px)
         margin-top: 40vh
 
@@ -111,6 +113,9 @@ $dark-mode-background-color: #1D1D1D
         margin-left: 0.5rem
 
 .home-trending-head-main
+    display: flex
+    align-items: center
+
     font-size: 1.5rem
     padding-block: 1rem
     padding-left: 1rem

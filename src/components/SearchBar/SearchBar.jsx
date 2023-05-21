@@ -14,7 +14,7 @@ export default function SearchBar() {
   
   const handleSearchMovie = async () => {
     if (query === "") {
-      console.log(query);
+
       setError("Enter a name");
     } else {
       const response = await fetch(

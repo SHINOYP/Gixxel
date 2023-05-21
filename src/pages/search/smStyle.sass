@@ -1,23 +1,24 @@
-.sm
-    position: relative
-    overflow: hidden
+
 .sm-main
     display: flex
-    width: 100%
-    margin-inline: auto
-    margin-left: 3.5rem
+    flex-direction: column
+    background-color: #1D1D1D
+    h4
+        display: flex
+        justify-content: center
+        font-size: 2rem
+        padding-block: 1rem
+        color: gray
+        @media(max-width:1000px)
+            font-size: 1rem
+
+.sm-cards
+    display: flex
     flex-wrap: wrap
-
-    @media(max-width:1000px)
-        display: flex
-        margin-left: 0px
-        margin-inline: auto
-
+    justify-content: center
+    background-color: #1D1D1D
 .sm-card-contain
-    overflow: hidden
     margin: 1rem
+
     @media(max-width:1000px)
-        display: flex
-        height: 100%
-        margin-block: 1rem
-        margin-left: 3rem
+        margin: 5px

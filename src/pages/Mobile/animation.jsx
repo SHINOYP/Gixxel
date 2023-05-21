@@ -2,27 +2,31 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 import MovieCard from "../../components/movieCard/movieCard";
-import "./smStyle.sass";
+import "../search/smStyle.sass";
 import Layout from "../../components/Layout/Layout";
+import { fetchAnimation } from "../../services";
 
-export default function SearchMovie() {
-  const [movies, setMovies] = useState([]);
+export default function Animation() {
+  const [anime, setAnime] = useState([]);
   const location = useLocation();
   const navigate=useNavigate()
   useEffect(() => {
-    setMovies(location.state.result.results);
+    fetchAnimation().then((data)=>{
+        setAnime(data.results)
+        console.log (data)
+    })
   }, []);
 
-  if (movies) {
+  if (anime) {
     return (
       <Layout>
         <div className="sm ">
           <div className="sm-main ">
             <h4>Search Results...</h4>
             <div className="sm-cards">
-              {movies &&
-                movies.map((movie) => (
-                  <div  onClick={()=>navigate(`/${movies.id || movie.id}`)} className="sm-card-contain  ">
+              {anime &&
+                anime.map((movie) => (
+                  <div key={movie.id}  onClick={()=>navigate(`/${movies.id || movie.id}`)} className="sm-card-contain  ">
                     <MovieCard key={movie.id} value={movie}  />
                   </div>
                 ))}
