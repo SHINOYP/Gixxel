@@ -95,7 +95,7 @@ function ResponsiveDrawer(props) {
   useEffect(() => {
     fetchMovieAllGenere().then((data) => {
       setGenre(data);
-      console.log(name);
+  
     });
   }, []);
 

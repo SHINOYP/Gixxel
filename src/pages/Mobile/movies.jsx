@@ -14,9 +14,9 @@ export default function MobileMovie() {
   useEffect(() => { 
     fetchMovie().then((data)=>{
         setMovies(data.results)
-        console.log(data)
+        
     })
-     console.log(movies)
+    
   }, []);
 
   if (movies) {

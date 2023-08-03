@@ -13,7 +13,7 @@ export default function Animation() {
   useEffect(() => {
     fetchAnimation().then((data) => {
       setAnime(data.results);
-      console.log(data);
+    
     });
   }, []);
 

@@ -61,7 +61,6 @@ const fetchMovie = () => {
 
 //Get A movie details
 const fetchmovieDetails = (mid) => {
-  console.log(mid);
   return new Promise((resolve, reject) => {
     fetch(
       `https://api.themoviedb.org/3/movie/${mid}?api_key=${
