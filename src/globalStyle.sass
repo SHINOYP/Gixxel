@@ -5,8 +5,11 @@
 html
   scroll-behavior: smooth
   font-family: 'Poppins', sans-serif
-body
+  height: max-content
   background-color: #1D1D1D
+  @media(max-width:1000px)
+    overflow-y: hidden
+body
   color: white
   overflow-x: hidden
 

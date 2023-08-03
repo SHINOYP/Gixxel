@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Triangle } from "react-loader-spinner";
@@ -8,7 +8,7 @@ import Home from "./pages/home/home";
 import Movies from "./pages/movies/movies";
 import Tv from "./pages/tv/TV";
 import MobileMovie from "./pages/Mobile/movies";
-import MobileTv from "./pages/Mobile/tv"
+import MobileTv from "./pages/Mobile/tv";
 import SearchMovie from "./pages/search/SearchMovie";
 import MovieDetails from "./pages/MovieDetails/movieDetails";
 import Animation from "./pages/Mobile/animation";
@@ -27,13 +27,12 @@ function App() {
     fetchMovie().then((data) => {
       dispatch(SET_MOVIE(data));
     });
-  },[]);
-  
+  }, []);
+
   // const end=import.meta.env.VITE_KEY;
   if (content) {
     return (
       <div className="App flex h-screen w-screen z-0">
-       
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies/:gid" element={<Movies />} />
@@ -41,9 +40,9 @@ function App() {
           <Route path="/search" element={<SearchMovie />} />
           <Route path="/:mid" element={<MovieDetails />} />
           {/* Mobile Only Pages */}
-          <Route path="/Movies" element={<MobileMovie  />} />
-          <Route path="/MTv" element={<MobileTv/>} />
-          <Route path="/Animation" element={<Animation/>} />
+          <Route path="/Movies" element={<MobileMovie />} />
+          <Route path="/MTv" element={<MobileTv />} />
+          <Route path="/Animation" element={<Animation />} />
         </Routes>
       </div>
     );

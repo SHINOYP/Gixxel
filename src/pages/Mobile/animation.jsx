@@ -9,12 +9,12 @@ import { fetchAnimation } from "../../services";
 export default function Animation() {
   const [anime, setAnime] = useState([]);
   const location = useLocation();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
-    fetchAnimation().then((data)=>{
-        setAnime(data.results)
-        console.log (data)
-    })
+    fetchAnimation().then((data) => {
+      setAnime(data.results);
+      console.log(data);
+    });
   }, []);
 
   if (anime) {
@@ -26,8 +26,12 @@ export default function Animation() {
             <div className="sm-cards">
               {anime &&
                 anime.map((movie) => (
-                  <div key={movie.id}  onClick={()=>navigate(`/${movies.id || movie.id}`)} className="sm-card-contain  ">
-                    <MovieCard key={movie.id} value={movie}  />
+                  <div
+                    key={movie.id}
+                    onClick={() => navigate(`/${movies.id || movie.id}`)}
+                    className="sm-card-contain  "
+                  >
+                    <MovieCard key={movie.id} value={movie} />
                   </div>
                 ))}
             </div>

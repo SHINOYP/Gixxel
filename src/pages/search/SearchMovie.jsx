@@ -8,7 +8,7 @@ import Layout from "../../components/Layout/Layout";
 export default function SearchMovie() {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     setMovies(location.state.result.results);
   }, []);
@@ -22,8 +22,11 @@ export default function SearchMovie() {
             <div className="sm-cards">
               {movies &&
                 movies.map((movie) => (
-                  <div  onClick={()=>navigate(`/${movies.id || movie.id}`)} className="sm-card-contain  ">
-                    <MovieCard key={movie.id} value={movie}  />
+                  <div
+                    onClick={() => navigate(`/${movies.id || movie.id}`)}
+                    className="sm-card-contain  "
+                  >
+                    <MovieCard key={movie.id} value={movie} />
                   </div>
                 ))}
             </div>

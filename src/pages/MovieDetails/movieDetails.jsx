@@ -12,11 +12,13 @@ import { fetchmovieDetails } from "../../services";
 import { data } from "autoprefixer";
 import MovieCard from "../../components/movieCard/movieCard";
 import KeyboardBackspaceSharpIcon from "@mui/icons-material/KeyboardBackspaceSharp";
+import Footer from "../../components/Layout/Footer/Footer"
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const [similar, setSimilar] = useState();
   const params = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     fetchmovieDetails(params.mid).then((data) => {
       setDetails(data);
@@ -47,7 +49,7 @@ const MovieDetails = () => {
           }}
           className="details-back"
         >
-          <KeyboardBackspaceSharpIcon style={{ fontSize: "3rem" }} />
+          <KeyboardBackspaceSharpIcon className="back-icon" />
         </button>
         <img
           className="details-backdrop"
@@ -117,12 +119,12 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className="similar">
-            <hr/>
+            <hr />
             <h1 className="similar-h1">Recommended</h1>
             <Swiper
               slidesPerView={2}
               freeMode={true}
-              style={{backgroundColor:'black'}}
+              style={{ backgroundColor: "black" }}
               breakpoints={{
                 0: {
                   spaceBetween: -120,
@@ -156,10 +158,10 @@ const MovieDetails = () => {
                 clickable: true,
               }}
               modules={[FreeMode, Pagination]}
-              className="mySwiper  "
+              className="mySwiper  recom-swiper "
             >
-              {similar&&
-                similar.results.map((movies) => (
+              {similar &&
+                similar?.results?.map((movies) => (
                   <SwiperSlide
                     onClick={() => navigate(`/${movies.id}`)}
                     key={movies.id}
@@ -170,6 +172,8 @@ const MovieDetails = () => {
             </Swiper>
           </div>
         </div>
+{/*   
+        <Footer/> */}
       </div>
     );
   } else {

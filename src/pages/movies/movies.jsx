@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation,useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_GENRE } from "../../services/store";
 import { Audio, Triangle } from "react-loader-spinner";
@@ -15,8 +15,8 @@ export default function movies() {
   const [totalPages, setTotalPages] = useState(0);
   const location = useLocation();
   const myProp = location.state?.myProp;
-  const navigate=useNavigate()
-  const params=useParams()
+  const navigate = useNavigate();
+  const params = useParams();
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -24,11 +24,15 @@ export default function movies() {
     }, 1000);
     const fetchSomething = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=af303dcb7ba62163922f8128770e6c9a&with_genres=${myProp || params.gid }&page=${currentPage}`,
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_KEY
+        }&with_genres=${
+          myProp || params.gid
+        }&page=${currentPage}`,
         { method: "GET" }
       );
       const result = await response.json();
-      console.log(params.gid)
+      console.log(params.gid);
       setMovies(result.results);
       setTotalPages(result.total_pages);
     };
@@ -59,7 +63,7 @@ export default function movies() {
             {movies &&
               movies.map((movie) => (
                 <div className="movie-card-contain">
-                  <MovieCard key={movie.id} value={movie}  />
+                  <MovieCard key={movie.id} value={movie} />
                 </div>
               ))}
           </div>

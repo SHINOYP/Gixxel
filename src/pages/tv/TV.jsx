@@ -19,7 +19,9 @@ export default function movies() {
 
     const fetchSomething = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=af303dcb7ba62163922f8128770e6c9a&with_genres=${myProp}&page=${currentPage}`,
+        `https://api.themoviedb.org/3/discover/tv?api_key=${
+          import.meta.env.VITE_KEY
+        }&with_genres=${myProp}&page=${currentPage}`,
         { method: "GET" }
       );
       const result = await response.json();

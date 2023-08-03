@@ -71,6 +71,8 @@ function ResponsiveDrawer(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [genre, setGenre] = useState();
   const [name, setName] = useState("");
+  const [search,setSearch]=useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -96,6 +98,25 @@ function ResponsiveDrawer(props) {
       console.log(name);
     });
   }, []);
+
+  const handleSearchMovie = async () => {
+    if (search === "") {
+
+      setError("Enter a name");
+    } else {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=af303dcb7ba62163922f8128770e6c9a&language=en-US&query=${search}&page=1&include_adult=false`,
+        { method: "GET" }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        navigate("/search", { state: { result } });
+      } else {
+        console.log(response)
+      }
+    }
+  };
 
   const drawer = (
     <div style={{ backgroundColor: "black", height: "100%", color: "white" }}>
@@ -166,7 +187,7 @@ function ResponsiveDrawer(props) {
             ""
           ) : (
             <div>
-              <Button
+              {/* <Button
                 id="basic-buttons"
                 aria-controls={open ? "basic-menu" : undefined}
                 aria-haspopup="true"
@@ -194,17 +215,20 @@ function ResponsiveDrawer(props) {
                     {item.name}
                   </MenuItem>
                 ))}
-              </Menu>
+              </Menu> */}
             </div>
           )}
-          <Search>
+          <Search sx={{display:'flex'}}>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon   />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onChange={(e)=>setSearch(e.target.value)}
+          
             />
+            <Button variant="outlined" sx={{margin:'1px'}} onClick={handleSearchMovie} >Search</Button>
           </Search>
         </Toolbar>
       </AppBar>
@@ -213,14 +237,14 @@ function ResponsiveDrawer(props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+  
         <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: "block", sm: "none" },

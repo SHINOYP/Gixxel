@@ -31,6 +31,9 @@
     position: relative
     top: -15vh
     padding-inline: 8rem
+    @media (max-width:1000px)
+        padding-inline: 10px
+        height: max-content
 
 .details-content
     padding-inline: 2rem
@@ -83,13 +86,28 @@
     border-radius: 100%
     &:hover
         background-color: red
+    .back-icon
+        font-size: 3rem
+        @media(max-width:1000px)
+            font-size: 2rem
+            filter: drop-shadow(0 0 0.75rem crimson)
 
 .similar
     margin-top: 14rem
     background-color: black
     margin-left: -8rem
+    @media(max-width:1000px)
+        margin-top: 2rem
 
 .similar-h1
     font-size: 2rem
     padding-left: 2rem
     padding-block: 2rem
+    @media(max-width:1000px)
+        font-size: 1rem
+        padding-left: 7.5rem
+
+.recom-swiper
+    @media(max-width:1000px)
+        margin-left: 8rem
+        height: 220px

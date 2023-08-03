@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       <MobileNav/>
       <main >{children}
       </main>
-      <Footer/>
+      {children?<Footer/>:''}
       </div>
     </>
   );
