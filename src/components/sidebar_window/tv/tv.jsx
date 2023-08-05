@@ -1,4 +1,4 @@
-import "./tv_style.sass";
+import "./tv_style.scss";
 import React from "react";
 
 const AddnewCourse = (props) => {

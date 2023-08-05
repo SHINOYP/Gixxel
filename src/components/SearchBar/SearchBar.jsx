@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./sbStyle.sass";
+import "./sbStyle.scss";
 
 export default function SearchBar() {
   const navigate = useNavigate();

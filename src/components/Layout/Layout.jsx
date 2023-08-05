@@ -10,9 +10,10 @@ const Layout = ({ children }) => {
       <Navbar />
       <div  className="layout">
       <MobileNav/>
-      <main >{children}
+      <main >
+        {children}
       </main>
-      {children?<Footer/>:''}
+        <Footer/>
       </div>
     </>
   );

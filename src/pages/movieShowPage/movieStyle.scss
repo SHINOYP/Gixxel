@@ -1,0 +1,24 @@
+.movie {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .movie-main {
+    display: flex;
+    width: 100vw;
+    margin-left: 3.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .movie-card-contain {
+    display: flex;
+    margin-inline: 0rem;
+    margin-block: 2rem;
+  }
+  
+  .movie-page-contain {
+    display: flex;
+    width: 100vw;
+  }
+  

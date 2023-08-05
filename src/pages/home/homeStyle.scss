@@ -1,0 +1,155 @@
+@import "../../globalStyle.scss";
+
+.swiper-slide img {
+  width: 100vw;
+  height: 668px;
+}
+
+.home {
+  position: relative;
+  color: $white-color;
+  background-color: $dark-mode-background-color;
+}
+
+.home-main {
+  width: 100vw;
+  display: flex;
+  position: fixed;
+  top: 0;
+  background-color: $dark-mode-background-color;
+}
+
+.home-content {
+  margin-top: 788px;
+  background-color: $dark-mode-background-color;
+  position: relative;
+  width: 100vw;
+}
+
+.home-slider-h1 {
+  position: absolute;
+  top: 21rem;
+  max-width: 80%;
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $black-color;
+  left: 10rem;
+  backdrop-filter: blur(1px);
+
+  @media (prefers-color-scheme: dark) {
+    color: $white-color;
+  }
+}
+
+.home-slider-date {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  top: 27rem;
+  position: absolute;
+  left: 10rem;
+  backdrop-filter: blur(1px);
+}
+
+.home-slider-lan {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  top: 27rem;
+  position: absolute;
+  left: 16rem;
+  backdrop-filter: blur(1px);
+}
+
+.home-slider-rating {
+  top: -22rem;
+  left: 10rem;
+  position: relative;
+  backdrop-filter: blur(1px);
+}
+
+.home-slider-p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  width: 50%;
+  position: relative;
+  top: -230px;
+  left: 160px;
+  backdrop-filter: blur(1px);
+}
+
+.home-trending-head {
+  margin-left: 4.5rem;
+}
+
+.home-trending-head-main {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding-block: 1rem;
+  padding-left: 1rem;
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .swiper-slide img {
+    height: 40vh;
+    width: 100vw;
+  }
+
+  .home-content {
+    margin-top: 40vh;
+  }
+  .home-slider-h1 {
+    font-size: 1.3rem;
+    left: 1.2rem;
+    top: 10rem;
+    font-weight: 500;
+    line-height: 1;
+    max-width: 82%;
+  }
+  .home-slider-date {
+    top: 14.6rem;
+    left: 1.3rem;
+    font-size: 0.5rem;
+    font-weight: 500;
+  }
+  .home-slider-lan {
+    top: 14.6rem;
+    left: 4.3rem;
+    font-size: 0.5rem;
+    font-weight: 500;
+  }
+  .home-slider-rating {
+    left: 1.2rem;
+    top: -7rem;
+  }
+  .home-slider-p {
+    font-size: 10px;
+    line-height: 10px;
+    top: -115px;
+    left: 1.2rem;
+    width: 80%;
+  }
+  .home-trending-head {
+    margin-left: 0.5rem;
+  }
+  .home-trending-head-main {
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+    padding-block: 0.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .swiper-slide img {
+    height: 35vh;
+  }
+  .home-slider-lan {
+    left: 4.8rem;
+  }
+  .home-main {
+    margin-top: 3.5rem;
+  }
+}

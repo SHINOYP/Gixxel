@@ -1,0 +1,18 @@
+@import "../../../globalStyle.scss";
+nav {
+  background-color: $black-color;
+  display: flex;
+  color: $white-color;
+  height: 150vh;
+  position: fixed;
+  z-index: 10;
+  opacity: 0.8;
+  width: 70px;
+  justify-content: center;
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+.nav-btn {
+  margin-bottom: 2.5rem;
+}

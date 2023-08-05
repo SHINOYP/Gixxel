@@ -1,0 +1,58 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+$breakpoint-sm: 767px; // Small devices (phones, 767px and down)
+$breakpoint-md:1050px; // Medium devices (tablets, 768px to 991px)
+$breakpoint-lg: 1200px; // Large devices (desktops, 992px to 1199px)
+$breakpoint-xl: 1400px; // Extra large devices (large desktops, 1200px and up)
+
+$dark-mode-background-color: #1D1D1D;
+$white-color:#ffffff;
+$black-color:#000000;
+$red-color:red;
+
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Poppins';
+  height: max-content;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color:$dark-mode-background-color;
+  overflow-y: hidden;
+}
+
+body {
+  color: $white-color;
+  overflow-x: hidden;
+  font-family: 'Poppins';
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $black-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $red-color;
+  }
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-mode-background-color;
+}
+
+
+
+@media screen and (max-width:$breakpoint-md){
+  html{
+    overflow-y: hidden;
+  }
+}

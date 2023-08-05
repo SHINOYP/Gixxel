@@ -8,7 +8,7 @@ import Popup from '../../sidebar_window/movie/movie'
 import Popup2 from '../../sidebar_window/tv/tv'
 import { useRef,useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import './navbarStyle.sass'
+import './navbarStyle.scss'
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -67,7 +67,7 @@ export default function Navbar() {
         </div>
          
     </nav>
-        <Popup  trigger={buttonPopup} setTrigger={setButtonPopup} >
+        {/* <Popup  trigger={buttonPopup} setTrigger={setButtonPopup} >
 
         <button 
         onClick={() => {
@@ -260,7 +260,7 @@ export default function Navbar() {
                 Western
                 </span>
             </button>
-        </Popup2>   
+        </Popup2>    */}
     </div>
   )
 }

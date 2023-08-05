@@ -1,4 +1,4 @@
-import "./movie_style.sass";
+import "./movie_style.scss";
 import React from "react";
 
 const AddnewCourse = (props) => {

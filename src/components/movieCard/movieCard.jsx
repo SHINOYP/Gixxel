@@ -1,4 +1,4 @@
-import "./movieCardStyle.sass";
+import "./movieCardStyle.scss";
 import React, { useState } from "react";
 import Noimg from "../../assets/istockphoto-1452662817-612x612.jpg"
 export default function movieCard(props) {

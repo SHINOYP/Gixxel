@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
-import "./homeStyle.sass";
+import "./homeStyle.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -45,7 +45,7 @@ const home = () => {
             modules={[EffectFade, Autoplay, Pagination, Navigation]}
           >
             {movies?.results.slice(0, 8).map((item) => (
-              <SwiperSlide key={item.id}>
+              <SwiperSlide key={item.id}   onClick={() => navigate(`/${item.id}`)}>
                 <img src={IMG_URL + item.backdrop_path} />
                 <h1 className="home-slider-h1 ">{item.title}</h1>
                 <span className="home-slider-date">{item.release_date} | </span>
