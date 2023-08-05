@@ -5,7 +5,7 @@ import { SET_GENRE } from "../../services/store";
 import { Audio, Triangle } from "react-loader-spinner";
 import MovieCard from "../../components/movieCard/movieCard";
 import Pagination from "@mui/material/Pagination";
-import "./movieStyle.sass";
+import "./movieStyle.scss";
 import Layout from "../../components/Layout/Layout";
 
 export default function movies() {
