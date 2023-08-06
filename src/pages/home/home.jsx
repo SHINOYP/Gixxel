@@ -36,17 +36,14 @@ const home = () => {
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
-           
             autoplay={{
               delay: 4000,
               disableOnInteraction:false,
             }}
             pagination={{
-              clickable: true,
+             clickable:true
             }}
-            
-       
-            modules={[ Autoplay]}
+            modules={[ Autoplay, Pagination]}
           >
             {movies?.results.slice(0, 10).map((item, index) => (
               <SwiperSlide key={index}>
