@@ -16,3 +16,144 @@ nav {
 .nav-btn {
   margin-bottom: 2.5rem;
 }
+
+
+.btn-category{
+  color: $white-color;
+  width: 100%;
+  max-width: 180px;
+  height: 30px;
+  display: flex;
+  background-color: $dark-mode-background-color;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius:14px ;
+  transition: 0.2s transform;
+  
+}
+
+
+.btn-category:hover{
+  transform: scale(1.04);
+}
+
+.gradient-border {
+  --border-width: 3px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  color: white;
+  background: #222;
+  border-radius: var(--border-width);
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 4s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.mv-popup {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  left: 0;
+  width: 635px;
+  height: 380px;
+  z-index: 2;
+  margin-left: 78px;
+  margin-top: 34px;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  .mv-popup-h1 {
+      width: 100%;
+      margin-left: 1rem;
+      margin-block: 1rem;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      
+  }
+  animation: 0.4s slideToLeft;
+  
+}
+
+@keyframes slideToLeft {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes slideToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-800px);
+  }
+}
+
+.mv-popup-disable{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  left: 0;
+  width: 635px;
+  height: 380px;
+  z-index: 2;
+  margin-left: 78px;
+  margin-top: 34px;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  .mv-popup-h1 {
+      width: 100%;
+      margin-left: 1rem;
+      margin-block: 1rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: white;
+     
+  }
+  animation: 0.4s slideToRight ;
+  transform: translateX(-800px);
+  @media (max-width: $breakpoint-sm) {
+    display: none;
+  }
+}
+
+

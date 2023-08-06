@@ -1,4 +1,8 @@
 @import '../../globalStyle.scss';
+.sm{
+  position: relative;
+}
+
 .sm-main {
     display: flex;
     flex-direction: column;
@@ -22,13 +26,14 @@
     flex-wrap: wrap;
     justify-content: center;
     background-color: $dark-mode-background-color;
+   
   }
   
   .sm-card-contain {
-    margin: 1rem;
+    margin-left: 1rem;
   
     @media (max-width: 1000px) {
-      margin: 5px;
+      margin: auto;
     }
   }
   

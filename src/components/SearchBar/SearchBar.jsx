@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchSearch } from "../../services";
 import "./sbStyle.scss";
 
 export default function SearchBar() {
@@ -7,29 +8,20 @@ export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetchSearch(currentPage).then((data) => {
+  //     setMovies(data.results);
+  //     setLoading(false);
+  //   });
+  // }, [currentPage]);
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
-  
-  const handleSearchMovie = async () => {
-    if (query === "") {
 
-      setError("Enter a name");
-    } else {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=af303dcb7ba62163922f8128770e6c9a&language=en-US&query=${query}&page=1&include_adult=false`,
-        { method: "GET" }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        setSearch(result);
-        navigate("/search", { state: { result } });
-      } else {
-      }
-    }
-  };
   return (
     <div className="sb">
       <input
@@ -39,7 +31,12 @@ export default function SearchBar() {
         name="search"
         placeholder={error ? error : "Search"}
       />
-      <button onClick={handleSearchMovie} type="submit">
+      <button
+        onClick={() => {
+          navigate(`/search/${query}`);
+        }}
+        type="submit"
+      >
         <svg
           className="text-blue-400 hover:text-blue-800 h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"

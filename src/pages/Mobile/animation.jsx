@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
-import MovieCard from "../../components/movieCard/movieCard";
-import "../searchPage/smStyle.scss";
-import Layout from "../../components/Layout/Layout";
 import { fetchAnimation } from "../../services";
+import MovieCard from "../../components/movieCard/movieCard";
+import Layout from "../../components/Layout/Layout";
+import Pagination from "@mui/material/Pagination";
+import "../searchPage/smStyle.scss";
+
+
+
 
 export default function Animation() {
   const [anime, setAnime] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    fetchAnimation().then((data) => {
+    fetchAnimation(currentPage).then((data) => {
       setAnime(data.results);
     });
-  }, []);
-
+  }, [currentPage]);
+  const handlePaginationChange = (event, value) => {
+    setCurrentPage(value)
+  };
   return (
     <>
       {anime ? (
@@ -35,6 +42,15 @@ export default function Animation() {
                     </div>
                   ))}
               </div>
+              <div>
+              <Pagination
+                className="movie-pagination"
+                count={100}
+                page={currentPage}
+                onChange={handlePaginationChange}
+                color="primary"
+              />
+            </div>
             </div>
           </div>
         </Layout>

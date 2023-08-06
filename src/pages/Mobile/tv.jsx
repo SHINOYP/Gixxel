@@ -4,19 +4,25 @@ import { Triangle } from "react-loader-spinner";
 import { fetchTvShow } from "../../services";
 import MovieCard from "../../components/movieCard/movieCard";
 import Layout from "../../components/Layout/Layout";
+import Pagination from "@mui/material/Pagination";
 import "../searchPage/smStyle.scss";
 
 export default function MobileTV() {
   const [tv, setTv] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    fetchTvShow().then((data) => {
+    fetchTvShow(currentPage).then((data) => {
       setTv(data.results);
       setLoading(false);
     });
-  }, []);
+  }, [currentPage]);
+
+  const handlePaginationChange = (event, value) => {
+    setCurrentPage(value)
+  };
 
   return (
     <>
@@ -51,6 +57,15 @@ export default function MobileTV() {
                     </div>
                   ))}
               </div>
+              <div>
+              <Pagination
+                className="movie-pagination"
+                count={100}
+                page={currentPage}
+                onChange={handlePaginationChange}
+                color="primary"
+              />
+            </div>
             </div>
           </div>
         </Layout>

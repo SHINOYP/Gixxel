@@ -9,15 +9,15 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-info">
-        <h1>Code. Code.</h1>
+        <h1>Fail, Fail Again, Fail Better</h1>
         <p>
           Iam a diverse and passionat dev that codes beautiful designs into
           working applications.I stay kight on our feet and truly enjoy
           delivering greate work
         </p>
         <div>
-          <button>Insights</button>
-          <button>Contact</button>
+          <button className="btn-info">Insights</button>
+          <button  className="btn-info">Contact</button>
         </div>
       </div>
       <div className="footer-icons">

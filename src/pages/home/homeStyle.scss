@@ -17,6 +17,7 @@
   position: fixed;
   top: 0;
   background-color: $dark-mode-background-color;
+  
 }
 
 .home-content {
@@ -24,6 +25,7 @@
   background-color: $dark-mode-background-color;
   position: relative;
   width: 100vw;
+ 
 }
 
 .home-slider-h1 {
@@ -143,6 +145,9 @@
 }
 
 @media screen and (max-width: $breakpoint-sm) {
+  .mouse{
+    display: none;
+  }
   .swiper-slide img {
     height: 35vh;
   }
@@ -151,5 +156,43 @@
   }
   .home-main {
     margin-top: 3.5rem;
+  }
+}
+
+
+
+.mouse {
+  width: 25px;
+  height: 40px;
+  border: 2px solid red;
+  border-radius: 60px;
+  position: absolute;
+  top: -2vh;
+  right: 48vw;
+  z-index: 10;
+}
+
+.mouse::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 30px;
+  background-color:red;   
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  opacity: 1;
+  animation: mouse 2s infinite;
+}
+
+@keyframes mouse {
+  from {
+      opacity: 1;
+      top: 0px;
+  }
+  to {
+      opacity: 0;
+      top:40px;
   }
 }

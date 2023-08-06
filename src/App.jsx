@@ -5,7 +5,7 @@ import { Triangle } from "react-loader-spinner";
 import { SET_HMMOVIE, SET_MOVIE, SET_TV } from "./services/store";
 import { fetchMovie, fetchTrending, fetchTvShow } from "./services/index";
 import Home from "./pages/home/home";
-import Movies from "./pages/movieShowPage/movies";
+import Movies from "./pages/movieShowPage/movieShow";
 import Tv from "./pages/tvShowPage/TV";
 import MobileMovie from "./pages/Mobile/movies";
 import MobileTv from "./pages/Mobile/tv";
@@ -33,13 +33,14 @@ function App() {
         <div className="App flex h-screen w-screen z-0">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies/:gid" element={<Movies />} />
+            {/* <Route path={'/movies'} element={<Movies />} /> */}
+            <Route path={'/movies/:id'} element={<Movies />} />
             <Route path="/tv" element={<Tv />} />
-            <Route path="/search" element={<SearchMovie />} />{" "}
+            <Route path="/search/:query" element={<SearchMovie />} />{" "}
             <Route path="/:mid" element={<MovieDetails />} />
             {/* Mobile Only Pages */}
-            <Route path="/Movies" element={<MobileMovie />} />
-            <Route path="/MTv" element={<MobileTv />} />
+            <Route path="/MobileMovies" element={<MobileMovie />} />
+            <Route path="/MobileTv" element={<MobileTv />} />
             <Route path="/Animation" element={<Animation />} />
           </Routes>
         </div>

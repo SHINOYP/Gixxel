@@ -2,19 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchmovieDetails } from "../../services";
+import { Triangle } from "react-loader-spinner";
+import { data } from "autoprefixer";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "./movieDetailStyles.scss";
-import { useNavigate, useParams } from "react-router-dom";
-import { fetchmovieDetails } from "../../services";
-import { Triangle } from "react-loader-spinner";
-import { data } from "autoprefixer";
 import MovieCard from "../../components/movieCard/movieCard";
 import KeyboardBackspaceSharpIcon from "@mui/icons-material/KeyboardBackspaceSharp";
 import Footer from "../../components/Layout/Footer/Footer";
-import VideoPlay from "../../components/VideoPlay";
 import Layout from "../../components/Layout/Layout"
 import YouTube from "react-youtube";
 
@@ -131,7 +130,7 @@ const MovieDetails = () => {
             />
           )}
           <a
-            class={playTrailer ? "paly-btn-disable" : "play-btn"}
+            className={playTrailer ? "paly-btn-disable" : "play-btn"}
             href="#"
             onClick={() => setPlayTrailer(!playTrailer)}
           ></a>

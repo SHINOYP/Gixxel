@@ -6,6 +6,7 @@
   flex-direction: column;
   height: 100%;
   max-height: 50vh;
+  bottom: 0;
   width: 100vw;
   background-color: $black-color;
   color: $white-color;
@@ -28,25 +29,50 @@
   width: 100%;
   align-items: center;
 
-  button{
-    background-color: $white-color;
-    padding: 0.8rem 3rem;
-    margin: 1rem;
-    border-radius: 40px;
-  }
+ 
 }
+
+.btn-info{
+  background-color: $white-color;
+  padding: 0.8rem 3rem;
+  margin: 1rem;
+  border-radius: 40px;
+  transition: transform 0.3s ;
+}
+.btn-info:hover{
+  transform: scale(1.1);
+}
+
+
 
 .footer-icons{
   display: flex;
   justify-content: space-between;
   padding-inline: 10vw;
   align-items: center;
+  
+
 }
 
-.footer-social{
+.footer-social {
   display: flex;
   gap: 20px;
+  // animation-name: slideToLeft;
+  // animation-duration: 1s;
+  // animation-delay: 0s;
+  // animation-iteration-count: infinite;
+  // an
+
 }
+
+// @keyframes slideToLeft {
+//   from {
+//     transform: translateY(-300px);
+//   }
+//   to {
+//     transform: translateY(0);
+//   }
+// }
 
 @media screen and (max-width: $breakpoint-md) {
   .footer{

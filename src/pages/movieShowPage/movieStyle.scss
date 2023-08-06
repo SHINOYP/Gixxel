@@ -1,24 +1,37 @@
-.movie {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-  }
-  
-  .movie-main {
+@import '../../globalStyle.scss';
+
+.movie{
+  background-color: $dark-mode-background-color;
+  padding-left: 4rem;
+  position: relative;
+  padding-top: 0.5rem;
+  .movie-main{
     display: flex;
-    width: 100vw;
-    margin-left: 3.5rem;
     flex-wrap: wrap;
+    gap: 30px;
   }
-  
-  .movie-card-contain {
-    display: flex;
-    margin-inline: 0rem;
-    margin-block: 2rem;
+}
+
+
+
+@media screen and (max-width:$breakpoint-md) {
+  .movie{
+    padding-inline: 3px;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+  }  
+  .movie{.movie-main{
+    gap: 10px;
   }
-  
-  .movie-page-contain {
-    display: flex;
-    width: 100vw;
-  }
-  
+}
+
+.movie-pagination{
+  left:0vw;
+  bottom: -30px;
+  border-radius: 0px; 
+  height: 30px;
+  width: 100vw;
+  background-color:rgb(82, 95, 109);
+}
+}
+

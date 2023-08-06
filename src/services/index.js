@@ -1,10 +1,10 @@
 //Get trending Tv Shows
-const fetchTvShow = () => {
+const fetchTvShow = (page) => {
   return new Promise((resolve, reject) => {
     fetch(
       `https://api.themoviedb.org/3/trending/tv/week?api_key=${
         import.meta.env.VITE_KEY
-      }`,
+      }&page=${page || 1}`,
       { method: "GET" }
     )
       .then(function (response) {
@@ -39,12 +39,12 @@ const fetchTrending = () => {
 };
 
 //Get Popular movies
-const fetchMovie = () => {
+const fetchMovie = (page) => {
   return new Promise((resolve, reject) => {
     fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${
         import.meta.env.VITE_KEY
-      }`,
+      }&page=${page || 1}`,
       {
         method: "GET",
       }
@@ -100,12 +100,32 @@ const fetchMovieAllGenere = () => {
 };
 
 //Get Animation
-const fetchAnimation = () => {
+const fetchAnimation = (page) => {
   return new Promise((resolve, reject) => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${
         import.meta.env.VITE_KEY
-      }&with_genres=16`,
+      }&with_genres=16&page=${page || 1}`,
+      {
+        method: "GET",
+      }
+    )
+      .then(function (response) {
+        resolve(response.json());
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  });
+};
+
+//Search
+const fetchSearch = (page, query) => {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${
+        import.meta.env.VITE_KEY
+      }&language=en-US&query=${query}&page=${page || 1}`,
       {
         method: "GET",
       }
@@ -126,4 +146,5 @@ export {
   fetchmovieDetails,
   fetchMovieAllGenere,
   fetchAnimation,
+  fetchSearch,
 };

@@ -48,11 +48,31 @@ body {
   justify-content: center;
   background-color: $dark-mode-background-color;
 }
-
+.movie-pagination{
+  display: flex;
+  color: $white-color !important;
+  width: fit-content;
+  border-radius: 40px; 
+  background-color: $red-color;
+  z-index: 1000;
+  position: absolute;
+  bottom: -50px;
+  left: 40vw;
+  height: fit-content;
+  
+}
 
 
 @media screen and (max-width:$breakpoint-md){
   html{
     overflow-y: hidden;
+  }
+  .movie-pagination{
+    left:0vw;
+    bottom: -30px;
+    border-radius: 0px; 
+    height: 30px;
+    width: 100vw;
+    background-color:rgb(82, 95, 109);
   }
 }

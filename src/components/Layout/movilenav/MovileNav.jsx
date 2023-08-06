@@ -136,11 +136,11 @@ function ResponsiveDrawer(props) {
             </ListItemButton>
           </ListItem>
         ))} */}
-        <ListItem onClick={() => navigate("/Movies")}> Movies</ListItem>
+        <ListItem onClick={() => navigate("/MobileMovies")}> Movies</ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem onClick={() => navigate("/MTv")}> Tv</ListItem>
+        <ListItem onClick={() => navigate("/MobileTv")}> Tv</ListItem>
         {/* {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>

@@ -65,6 +65,9 @@ const home = () => {
           </Swiper>
           <SearchBar />
         </div>
+        <div class="mouse">
+
+</div>
         <div className="home-content">
           <div className="home-trending-head ">
             <div className="home-trending-head-main">

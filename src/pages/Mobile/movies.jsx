@@ -4,20 +4,27 @@ import { Triangle } from "react-loader-spinner";
 import { fetchMovie } from "../../services";
 import MovieCard from "../../components/movieCard/movieCard";
 import Layout from "../../components/Layout/Layout";
+import Pagination from "@mui/material/Pagination";
 import "../searchPage/smStyle.scss";
 
 export default function MobileMovie() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
+  
   useEffect(() => {
-    fetchMovie().then((data) => {
+    setLoading(true)
+    fetchMovie(currentPage).then((data) => {
       setMovies(data.results);
       setLoading(false);
     });
-  }, []);
+  }, [currentPage]);
 
+  const handlePaginationChange = (event, value) => {
+    setCurrentPage(value)
+  };
   return (
     <>
       {loading ? (
@@ -51,6 +58,15 @@ export default function MobileMovie() {
                     </div>
                   ))}
               </div>
+              <div>
+              <Pagination
+                className="movie-pagination"
+                count={100}
+                page={currentPage}
+                onChange={handlePaginationChange}
+                color="primary"
+              />
+            </div>
             </div>
           </div>
         </Layout>
