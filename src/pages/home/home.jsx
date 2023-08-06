@@ -38,15 +38,15 @@ const home = () => {
             centeredSlides={true}
             effect={"fade"}
             autoplay={{
-              delay: 4000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
-            pagination={{
+{/*             pagination={{
               type: 'progressbar',
-            }}
-            // pagination={{
-            //   clickable: true,
-            // }}
+            }} */}
+            pagination={{
+             clickable: true,
+             }}
             modules={[EffectFade, Autoplay, Pagination, Navigation]}
           >
             {movies?.results.slice(0, 8).map((item) => (
