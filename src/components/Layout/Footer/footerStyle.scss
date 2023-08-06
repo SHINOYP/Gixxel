@@ -38,6 +38,8 @@
   margin: 1rem;
   border-radius: 40px;
   transition: transform 0.3s ;
+  color: $black-color;
+  font-size: 1rem;
 }
 .btn-info:hover{
   transform: scale(1.1);

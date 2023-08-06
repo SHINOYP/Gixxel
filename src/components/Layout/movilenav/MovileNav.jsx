@@ -16,6 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from '@mui/material/InputBase';
+import Icon from '../../../../public/icon.png'
 import { fetchMovieAllGenere } from "../../../services";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
@@ -106,6 +107,9 @@ function ResponsiveDrawer(props) {
     <div className="menu-items">
       <Toolbar />
       <Divider />
+      <List className="-mt-10 mb-10 ml-3 flex gap-10 items-center">
+        <img src={Icon}/>
+      </List>
       <List>
         <ListItem onClick={() => navigate("/")}> Home</ListItem>
       </List>

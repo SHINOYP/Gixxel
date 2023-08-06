@@ -167,7 +167,7 @@
 .mouse {
   width: 25px;
   height: 40px;
-  border: 2px solid red;
+  border: 2px solid $red-color;
   border-radius: 60px;
   position: absolute;
   top: -2vh;
@@ -181,7 +181,7 @@
   height: 5px;
   position: absolute;
   top: 30px;
-  background-color:red;   
+  background-color:$red-color;   
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;

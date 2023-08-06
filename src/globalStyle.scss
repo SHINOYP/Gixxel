@@ -21,6 +21,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   background-color: $dark-mode-background-color;
   overflow-y: hidden;
+  scroll-behavior: smooth;
 }
 
 body {

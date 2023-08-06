@@ -16,8 +16,8 @@ export default function Footer() {
           delivering greate work
         </p>
         <div>
-          <button className="btn-info">Insights</button>
-          <button  className="btn-info">Contact</button>
+          <button className="btn-info"   onClick={() => { window.location.href = 'https://github.com/SHINOYP/Gixxel'; } }> 👀  Insights</button>
+          <button  className="btn-info " onClick={() => { window.location.href = 'https://mail.google.com/mail/u/0/#search/shinoyshinoo%40gmail.com?compose=CllgCJqTfltWnQSRqMKvVKqxJzxvZJNHpFJMRsRnnSLHvkrzhvbKKfPKRZkCmtQkmtVbhjmCVrg'; } }>👋  Contact</button>
         </div>
       </div>
       <div className="footer-icons">

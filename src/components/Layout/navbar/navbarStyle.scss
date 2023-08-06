@@ -48,7 +48,7 @@ nav {
   align-items: center;
   font-family: Lato, sans-serif;
   text-transform: uppercase;
-  color: white;
+  color: $white-color;
   background: #222;
   border-radius: var(--border-width);
   &::after {
@@ -103,7 +103,7 @@ nav {
       margin-block: 1rem;
       font-size: 1.2rem;
       font-weight: 800;
-      color: white;
+      color: $white-color;
       
   }
   animation: 0.4s slideToLeft;
@@ -148,7 +148,7 @@ nav {
       margin-block: 1rem;
       font-size: 1.2rem;
       font-weight: 500;
-      color: white;
+      color: $white-color;
      
   }
   animation: 0.1s slideToRight ;

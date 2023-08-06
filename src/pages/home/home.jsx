@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Tv from "../../components/tvshowslider/tvshow";
@@ -10,7 +10,7 @@ import Rating from "@mui/material/Rating";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MovieCard from "../../components/movieCard/movieCard";
 import Layout from "../../components/Layout/Layout";
-import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 import "./homeStyle.scss";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -28,7 +28,7 @@ const home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  console.log(movies)
+
   return (
     <Layout>
       <div className="home">
@@ -38,20 +38,26 @@ const home = () => {
             centeredSlides={true}
             effect={"fade"}
             autoplay={{
-              delay: 4000,
+              delay: 2000,
               disableOnInteraction: false,
             }}
-            pagination={{
-              type: 'progressbar',
-            }}
             // pagination={{
-            //   clickable: true,
+            //   type: 'progressbar',
             // }}
+            pagination={{
+              clickable: true,
+            }}
             modules={[EffectFade, Autoplay, Pagination, Navigation]}
           >
-            {movies?.results.slice(0, 8).map((item) => (
-              <SwiperSlide key={item.id}   onClick={() => navigate(`/${item.id}`)}>
-                <LazyLoadImage alt="not found" src={IMG_URL + item.backdrop_path} />
+            {movies?.results.slice(0, 10).map((item) => (
+              <SwiperSlide
+                key={item.id}
+                onClick={() => navigate(`/${item.id}`)}
+              >
+                <LazyLoadImage
+                  alt="not found"
+                  src={IMG_URL + item.backdrop_path}
+                />
                 <h1 className="home-slider-h1 ">{item.title}</h1>
                 <span className="home-slider-date">{item.release_date} | </span>
                 <span className="home-slider-lan">
@@ -70,9 +76,7 @@ const home = () => {
           </Swiper>
           <SearchBar />
         </div>
-        <div class="mouse">
-
-</div>
+        <div class="mouse"></div>
         <div className="home-content">
           <div className="home-trending-head ">
             <div className="home-trending-head-main">
@@ -147,12 +151,14 @@ const home = () => {
           </div>
           <div className="home-trending-head ">
             <div className="home-trending-head-main">
-              <h1 className="mr-2"> Trending TV Show</h1><NavigateNextRoundedIcon color="teal" />
+              <h1 className="mr-2"> Trending TV Show</h1>
+              <NavigateNextRoundedIcon color="teal" />
             </div>
             <Tv />
             <div className="">
               <div className="home-trending-head-main">
-                <h1 className="mr-2"> Trending Movies</h1><NavigateNextRoundedIcon color="teal"/>
+                <h1 className="mr-2"> Trending Movies</h1>
+                <NavigateNextRoundedIcon color="teal" />
               </div>
               <div className="home-trending-swiper-div">
                 {TrendingMovies ? (
@@ -200,7 +206,7 @@ const home = () => {
                           onClick={() => navigate(`/${movies.id}`)}
                           key={movies.id}
                         >
-                          <MovieCard  key={movies.id} value={movies} />
+                          <MovieCard key={movies.id} value={movies} />
                         </SwiperSlide>
                       ))}
                   </Swiper>
