@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
-import "./homeStyle.scss";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/free-mode";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Tv from "../../components/tvshowslider/tvshow";
 import Rating from "@mui/material/Rating";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MovieCard from "../../components/movieCard/movieCard";
 import Layout from "../../components/Layout/Layout";
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import { useNavigate } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "./homeStyle.scss";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/free-mode";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const home = () => {
@@ -27,6 +28,7 @@ const home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  console.log(movies)
   return (
     <Layout>
       <div className="home">
@@ -34,19 +36,22 @@ const home = () => {
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
-            // effect={"fade"}
+            effect={"fade"}
             autoplay={{
               delay: 4000,
               disableOnInteraction: false,
             }}
             pagination={{
-              clickable: true,
+              type: 'progressbar',
             }}
+            // pagination={{
+            //   clickable: true,
+            // }}
             modules={[EffectFade, Autoplay, Pagination, Navigation]}
           >
             {movies?.results.slice(0, 8).map((item) => (
               <SwiperSlide key={item.id}   onClick={() => navigate(`/${item.id}`)}>
-                <img src={IMG_URL + item.backdrop_path} />
+                <LazyLoadImage alt="not found" src={IMG_URL + item.backdrop_path} />
                 <h1 className="home-slider-h1 ">{item.title}</h1>
                 <span className="home-slider-date">{item.release_date} | </span>
                 <span className="home-slider-lan">
@@ -142,12 +147,12 @@ const home = () => {
           </div>
           <div className="home-trending-head ">
             <div className="home-trending-head-main">
-              <h1 className="mr-2"> Trending TV Show</h1><NavigateNextRoundedIcon/>
+              <h1 className="mr-2"> Trending TV Show</h1><NavigateNextRoundedIcon color="teal" />
             </div>
             <Tv />
             <div className="">
               <div className="home-trending-head-main">
-                <h1 className="mr-2"> Trending Movies</h1><NavigateNextRoundedIcon/>
+                <h1 className="mr-2"> Trending Movies</h1><NavigateNextRoundedIcon color="teal"/>
               </div>
               <div className="home-trending-swiper-div">
                 {TrendingMovies ? (

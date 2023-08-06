@@ -12,7 +12,7 @@ export default function Footer() {
         <h1>Fail, Fail Again, Fail Better</h1>
         <p>
           Iam a diverse and passionat dev that codes beautiful designs into
-          working applications.I stay kight on our feet and truly enjoy
+          working applications.I stay kight on my feet and truly enjoy
           delivering greate work
         </p>
         <div>
@@ -26,18 +26,18 @@ export default function Footer() {
         <span>
          
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          (c) {new Date().getFullYear()} Your Company Name. All rights reserved.
+        &copy; {new Date().getFullYear()} Your Company . All rights reserved.
         </span>
         <div className="footer-social">
-          <a href="">
+          <a href="https://www.linkedin.com/in/shinoyp/">
             {" "}
             <FaLinkedin />
           </a>
-          <a>
+          <a href="https://www.instagram.com/shinoy._.p/">
             {" "}
             <BsInstagram />
           </a>
-          <a>
+          <a href="https://github.com/SHINOYP">
             {" "}
             <AiFillGithub />
           </a>

@@ -59,7 +59,7 @@ export default function MobileTV() {
               </div>
               <div>
               <Pagination
-                className="movie-pagination"
+                className="pagination-container"
                 count={100}
                 page={currentPage}
                 onChange={handlePaginationChange}

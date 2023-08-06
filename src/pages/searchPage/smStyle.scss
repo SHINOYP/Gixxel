@@ -1,39 +1,63 @@
-@import '../../globalStyle.scss';
-.sm{
-  position: relative;
-}
+@import "../../globalStyle.scss";
 
 .sm-main {
+  display: flex;
+  flex-direction: column;
+  background-color: $dark-mode-background-color;
+  position: relative;
+  min-height: 80vh;
+  h4 {
     display: flex;
-    flex-direction: column;
-    background-color: $dark-mode-background-color;
-  
-    h4 {
-      display: flex;
-      justify-content: center;
-      font-size: 2rem;
-      padding-block: 1rem;
-      color: gray;
-  
-      @media (max-width: 1000px) {
-        font-size: 1rem;
-      }
+    justify-content: center;
+    font-size: 2rem;
+    padding-block: 1rem;
+    color: gray;
+
+    @media (max-width: 1000px) {
+      font-size: 1rem;
     }
   }
-  
+}
+
+.sm-cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 4rem;
+  gap: 15px;
+  background-color: $dark-mode-background-color;
+}
+
+.sm-card-contain {
+  margin-left: 1rem;
+
+  @media (max-width: 1000px) {
+    margin: auto;
+  }
+}
+
+.no-results{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20vh;
+  color: $white-color;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: $breakpoint-sm) {
   .sm-cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: $dark-mode-background-color;
-   
+    gap: 10px;
+    padding-left: 0px;
   }
-  
+
   .sm-card-contain {
-    margin-left: 1rem;
-  
-    @media (max-width: 1000px) {
-      margin: auto;
-    }
+    margin: 0px;
+    display: flex;
+    gap: 10px;
   }
-  
+}

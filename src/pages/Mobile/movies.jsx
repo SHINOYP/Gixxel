@@ -60,7 +60,7 @@ export default function MobileMovie() {
               </div>
               <div>
               <Pagination
-                className="movie-pagination"
+                className="pagination-container"
                 count={100}
                 page={currentPage}
                 onChange={handlePaginationChange}

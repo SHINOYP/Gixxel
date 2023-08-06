@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import play from "../../../assets/play.svg";
 import cinema from "../../../assets/cinema.svg";
 import tv from "../../../assets/tv.svg";
@@ -10,7 +11,8 @@ export default function Navbar() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [buttonPopup2, setButtonPopup2] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [movieCategories, setMovieCategories] = useState([]);
+  const [tvCategories, setTvCategories] = useState([]);
   const [reload, setReload] = useState(false);
   const [myProp, setMyProp] = useState(location.state?.myProp || null);
   const myRef = useRef();
@@ -24,7 +26,8 @@ export default function Navbar() {
     }
   };
   useEffect(() => {
-    fetchCategories();
+    fetchCategoriesMovie();
+    fetchCategoriesTv();
   }, []);
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -43,7 +46,7 @@ export default function Navbar() {
     setButtonPopup(false);
     setButtonPopup2(false);
   };
-  const fetchCategories = async () => {
+  const fetchCategoriesMovie = async () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${
@@ -58,12 +61,32 @@ export default function Navbar() {
         throw new Error("Network response was not ok.");
       }
       const result = await response.json();
-      setCategories(result.genres);
+      setMovieCategories(result.genres);
     } catch (error) {
-      throw new Error("Error fetching categories: " + error.message);
+      throw new Error("Error fetching movieCategories: " + error.message);
     }
   };
 
+  const fetchCategoriesTv = async () => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/genre/tv/list?api_key=${
+          import.meta.env.VITE_KEY
+        }`,
+        {
+          method: "GET",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      const result = await response.json();
+      setTvCategories(result.genres);
+    } catch (error) {
+      throw new Error("Error fetching movieCategories: " + error.message);
+    }
+  };
   return (
     <div ref={myRef}>
       <nav>
@@ -72,12 +95,12 @@ export default function Navbar() {
             onClick={() => navigate("/")}
             className="my-10 hover:bg-red-600 hover:rounded"
           >
-            <img src={play} />
+            <LazyLoadImage alt="image missing" src={play} />
           </button>
 
           <NavLink to={"/"} className="mb-10 hover:bg-red-600 hover:rounded">
             <button onClick={handleHome}>
-              <img src={Btn_fs} />
+              <LazyLoadImage alt="image missing" src={Btn_fs} />
             </button>
           </NavLink>
 
@@ -85,14 +108,14 @@ export default function Navbar() {
             onClick={handlePop}
             className="mb-10 hover:bg-red-600 hover:rounded"
           >
-            <img src={cinema} />
+            <LazyLoadImage alt="image missing" src={cinema} />
           </button>
 
           <button
             onClick={handlePop2}
             className="mb-10 hover:bg-red-600 hover:rounded"
           >
-            <img src={tv} />
+            <LazyLoadImage alt="image missing" src={tv} />
           </button>
         </div>
       </nav>
@@ -101,11 +124,11 @@ export default function Navbar() {
         className={buttonPopup ? "mv-popup" : " mv-popup-disable"}
       >
         <h1 className="mv-popup-h1">Movies Genres</h1>
-        {categories?.map((item, index) => {
+        {movieCategories?.map((item, index) => {
           return (
             <Link
               key={index}
-              to={`/movies/${item.id}`}
+              to={`/movie/${item.id}`}
               className="gradient-border btn-category"
             >
               {item.name}
@@ -118,14 +141,14 @@ export default function Navbar() {
         className={buttonPopup2 ? "mv-popup" : " mv-popup-disable"}
       >
         <h1 className="mv-popup-h1">TV Genres</h1>
-        {categories?.map((item, index) => {
+        {tvCategories?.map((item, index) => {
           return (
             <Link
               key={index}
-              to={`/movies/${item.id}`}
+              to={`/tv/${item.id}`}
               className="gradient-border btn-category"
             >
-              {item.name}
+              {item.name.substring(0,17)}
             </Link>
           );
         })}

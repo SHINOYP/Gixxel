@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect,Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Triangle } from "react-loader-spinner";
 import { SET_HMMOVIE, SET_MOVIE, SET_TV } from "./services/store";
 import { fetchMovie, fetchTrending, fetchTvShow } from "./services/index";
-import Home from "./pages/home/home";
-import Movies from "./pages/movieShowPage/movieShow";
-import Tv from "./pages/tvShowPage/TV";
-import MobileMovie from "./pages/Mobile/movies";
-import MobileTv from "./pages/Mobile/tv";
-import SearchMovie from "./pages/searchPage/SearchMovie";
-import MovieDetails from "./pages/MovieDetails/movieDetails";
-import Animation from "./pages/Mobile/animation";
+const Home = React.lazy(() => import('./pages/home/home'));
+const Genere  = React.lazy(() => import('./pages/ShowGenreWise/GenreShow'));
+const SearchResults = React.lazy(() => import('./pages/searchPage/SearchMovie'));
+const MovieDetails = React.lazy(() => import('./pages/MovieDetails/movieDetails'));
+//mobile only pages
+const  MobileMovie = React.lazy(() => import('./pages/Mobile/movies'));
+const  MobileTv = React.lazy(() => import('./pages/Mobile/tv'));
+const   Anime = React.lazy(() => import('./pages/Mobile/animation'));
+
+
 
 function App() {
   const dispatch = useDispatch();
   const content = useSelector((state) => state.movie.value);
+  
   useEffect(() => {
     fetchTvShow().then((data) => {
       dispatch(SET_TV(data));
@@ -29,21 +32,37 @@ function App() {
   }, []);
   return (
     <>
+    {/* Only load when the Home page data is fetched  Otherwise keep the page in loading state*/}
       {content ? (
-        <div className="App flex h-screen w-screen z-0">
+        <Suspense fallback={ <div className="loading">
+        <Triangle
+          height="80"
+          width="80"
+          radius="9"
+          color="white"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      </div>}>
+        <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path={'/movies'} element={<Movies />} /> */}
-            <Route path={'/movies/:id'} element={<Movies />} />
-            <Route path="/tv" element={<Tv />} />
-            <Route path="/search/:query" element={<SearchMovie />} />{" "}
+            
+            {/* fetch Genere wise */}
+            <Route path="/:type/:id" element={<Genere />} />
+            {/* Search result  */}
+            <Route path="/search/:query" element={<SearchResults />} />
+            {/* Detials page */}
             <Route path="/:mid" element={<MovieDetails />} />
+            
             {/* Mobile Only Pages */}
             <Route path="/MobileMovies" element={<MobileMovie />} />
             <Route path="/MobileTv" element={<MobileTv />} />
-            <Route path="/Animation" element={<Animation />} />
+            <Route path="/Animation" element={<Anime />} />
           </Routes>
         </div>
+        </Suspense>
       ) : (
         <div className="loading">
           <Triangle

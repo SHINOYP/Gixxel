@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchSearch } from "../../services";
 import "./sbStyle.scss";
 
 export default function SearchBar() {
@@ -8,19 +7,11 @@ export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState([]);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetchSearch(currentPage).then((data) => {
-  //     setMovies(data.results);
-  //     setLoading(false);
-  //   });
-  // }, [currentPage]);
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
+  
 
   return (
     <div className="sb">
@@ -31,14 +22,9 @@ export default function SearchBar() {
         name="search"
         placeholder={error ? error : "Search"}
       />
-      <button
-        onClick={() => {
-          navigate(`/search/${query}`);
-        }}
-        type="submit"
-      >
+      <button onClick={()=>{navigate(`/search/${query}`)}} type="submit">
         <svg
-          className="text-blue-400 hover:text-blue-800 h-4 w-4 fill-current"
+          className="text-teal-400 hover:text-red-400 h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
           version="1.1"

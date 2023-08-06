@@ -19,6 +19,7 @@ import InputBase from '@mui/material/InputBase';
 import { fetchMovieAllGenere } from "../../../services";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
+import './MobileNav.scss'
 const drawerWidth = 240;
 
 
@@ -99,58 +100,21 @@ function ResponsiveDrawer(props) {
     });
   }, []);
 
-  const handleSearchMovie = async () => {
-    if (search === "") {
-
-      setError("Enter a name");
-    } else {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=af303dcb7ba62163922f8128770e6c9a&language=en-US&query=${search}&page=1&include_adult=false`,
-        { method: "GET" }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        navigate("/search", { state: { result } });
-      } else {
-        console.log(response)
-      }
-    }
-  };
+  
 
   const drawer = (
-    <div style={{ backgroundColor: "black", height: "100%", color: "white" }}>
+    <div className="menu-items">
       <Toolbar />
       <Divider />
       <List>
         <ListItem onClick={() => navigate("/")}> Home</ListItem>
       </List>
       <List>
-        {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))} */}
         <ListItem onClick={() => navigate("/MobileMovies")}> Movies</ListItem>
       </List>
       <Divider />
       <List>
         <ListItem onClick={() => navigate("/MobileTv")}> Tv</ListItem>
-        {/* {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))} */}
       </List>
       <Divider />
       <List>
@@ -223,12 +187,12 @@ function ResponsiveDrawer(props) {
               <SearchIcon   />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder={error || 'Search...'}
               inputProps={{ "aria-label": "search" }}
               onChange={(e)=>setSearch(e.target.value)}
           
             />
-            <Button variant="outlined" sx={{margin:'1px'}} onClick={handleSearchMovie} >Search</Button>
+            <Button  variant="outlined" sx={{margin:'1px',color:'#0FEFFD'}} onClick={()=>{search?navigate(`/search/${search}`):setError('Enter something')}}>Search</Button>
           </Search>
         </Toolbar>
       </AppBar>

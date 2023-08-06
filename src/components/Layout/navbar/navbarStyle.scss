@@ -9,7 +9,7 @@ nav {
   opacity: 0.8;
   width: 70px;
   justify-content: center;
-  @media (max-width: $breakpoint-md) {
+  @media (max-width:900px) {
     display: none;
   }
 }
@@ -22,6 +22,7 @@ nav {
   color: $white-color;
   width: 100%;
   max-width: 180px;
+
   height: 30px;
   display: flex;
   background-color: $dark-mode-background-color;
@@ -39,6 +40,7 @@ nav {
 }
 
 .gradient-border {
+  
   --border-width: 3px;
   position: relative;
   display: flex;
@@ -149,7 +151,7 @@ nav {
       color: white;
      
   }
-  animation: 0.4s slideToRight ;
+  animation: 0.1s slideToRight ;
   transform: translateX(-800px);
   @media (max-width: $breakpoint-sm) {
     display: none;

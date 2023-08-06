@@ -12,6 +12,7 @@
 }
 
 .home-main {
+  margin-top: 1px;
   width: 100vw;
   display: flex;
   position: fixed;
@@ -57,11 +58,12 @@
 .home-slider-lan {
   text-align: left;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 200;
   top: 27rem;
   position: absolute;
-  left: 16rem;
+  left: 16.5rem;
   backdrop-filter: blur(1px);
+  color: $teal-color;
 }
 
 .home-slider-rating {
@@ -110,6 +112,7 @@
     font-weight: 500;
     line-height: 1;
     max-width: 82%;
+    
   }
   .home-slider-date {
     top: 14.6rem;
@@ -119,7 +122,7 @@
   }
   .home-slider-lan {
     top: 14.6rem;
-    left: 4.3rem;
+    left: 4.5rem;
     font-size: 0.5rem;
     font-weight: 500;
   }

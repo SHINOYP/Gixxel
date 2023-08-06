@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchmovieDetails } from "../../services";
 import { Triangle } from "react-loader-spinner";
 import { data } from "autoprefixer";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -49,7 +50,8 @@ const MovieDetails = () => {
     setSimilar(jsonData);
   };
 
-  // // Function to fetch movie videos by ID
+  //trailer fetch
+
   async function fetchMovieVideos(movieId) {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${
@@ -60,10 +62,11 @@ const MovieDetails = () => {
     return data.results;
   }
 
+
   const fetchTrailer = async () => {
     fetchMovieVideos(params.mid)
       .then((videos) => {
-        console.log("Movie Videos:", videos);
+        // console.log("Movie Videos:", videos);
         const trailer = videos.find((video) => video.type === "Trailer");
         setTrailerId(trailer.key);
         if (trailer) {
@@ -109,7 +112,7 @@ const MovieDetails = () => {
             <KeyboardBackspaceSharpIcon className="back-icon" />
           </button>
           {!playTrailer ? (
-            <img
+            <LazyLoadImage
               className="details-backdrop"
               src={import.meta.env.VITE_IMG_URI + details.backdrop_path}
             />
@@ -204,7 +207,6 @@ const MovieDetails = () => {
               <Swiper
                 slidesPerView={2}
                 freeMode={true}
-                style={{ backgroundColor: "black" }}
                 breakpoints={{
                   0: {
                     spaceBetween: -120,
@@ -238,7 +240,7 @@ const MovieDetails = () => {
                   clickable: true,
                 }}
                 modules={[FreeMode, Pagination]}
-                className="mySwiper  recom-swiper "
+                className="mySwiper  related-swiper "
               >
                 {similar &&
                   similar?.results?.map((movies) => (

@@ -1,32 +1,32 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 $breakpoint-sm: 767px; // Small devices (phones, 767px and down)
-$breakpoint-md:1050px; // Medium devices (tablets, 768px to 991px)
+$breakpoint-md: 1050px; // Medium devices (tablets, 768px to 991px)
 $breakpoint-lg: 1200px; // Large devices (desktops, 992px to 1199px)
 $breakpoint-xl: 1400px; // Extra large devices (large desktops, 1200px and up)
 
-$dark-mode-background-color: #1D1D1D;
-$white-color:#ffffff;
-$black-color:#000000;
-$red-color:red;
-
+$dark-mode-background-color: #1d1d1d;
+$white-color: #ffffff;
+$black-color: #000000;
+$red-color: red;
+$teal-color:#0FEFFD;
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   height: max-content;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:$dark-mode-background-color;
+  background-color: $dark-mode-background-color;
   overflow-y: hidden;
 }
 
 body {
   color: $white-color;
   overflow-x: hidden;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   &::-webkit-scrollbar {
     width: 0.25rem;
   }
@@ -40,6 +40,16 @@ body {
   }
 }
 
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: $dark-mode-background-color;
+
+}
+
+
+
 .loading {
   width: 100vw;
   height: 100vh;
@@ -48,31 +58,31 @@ body {
   justify-content: center;
   background-color: $dark-mode-background-color;
 }
-.movie-pagination{
+.pagination-container {
   display: flex;
   color: $white-color !important;
   width: fit-content;
-  border-radius: 40px; 
+  border-radius: 40px;
   background-color: $red-color;
   z-index: 1000;
   position: absolute;
   bottom: -50px;
   left: 40vw;
   height: fit-content;
-  
 }
 
-
-@media screen and (max-width:$breakpoint-md){
-  html{
+@media screen and (max-width: $breakpoint-md) {
+  html {
     overflow-y: hidden;
   }
-  .movie-pagination{
-    left:0vw;
+  .pagination-container {
+    left: 0vw;
     bottom: -30px;
-    border-radius: 0px; 
+    border-radius: 0px;
     height: 30px;
     width: 100vw;
-    background-color:rgb(82, 95, 109);
+    background: #780206; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #780206, #061161); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #780206, #061161); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 }
