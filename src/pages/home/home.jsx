@@ -41,12 +41,10 @@ const home = () => {
               delay: 4000,
               disableOnInteraction: false,
             }}
+           
             pagination={{
-              type: 'progressbar',
-            }}
-            // pagination={{
-            //   clickable: true,
-            // }}
+               clickable: true,
+             }}
             modules={[EffectFade, Autoplay, Pagination, Navigation]}
           >
             {movies?.results.slice(0, 10).map((item) => (
