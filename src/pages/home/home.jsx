@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
+import { EffectFade,EffectCoverflow, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -36,27 +36,24 @@ const home = () => {
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
-            effect={"fade"}
+           
             autoplay={{
               delay: 4000,
-              disableOnInteraction: false,
+              disableOnInteraction:false,
             }}
             pagination={{
-              type: 'progressbar',
+              clickable: true,
             }}
-            // pagination={{
-            //   clickable: true,
-            // }}
-            modules={[EffectFade, Autoplay, Pagination, Navigation]}
+            
+       
+            modules={[ Autoplay]}
           >
-            {movies?.results.slice(0, 10).map((item) => (
-              <SwiperSlide
-                key={item.id}
-                onClick={() => navigate(`/${item.id}`)}
-              >
+            {movies?.results.slice(0, 10).map((item, index) => (
+              <SwiperSlide key={index}>
                 <LazyLoadImage
                   alt="not found"
                   src={IMG_URL + item.backdrop_path}
+                  onClick={() => navigate(`/${item.id}`)}
                 />
                 <h1 className="home-slider-h1 ">{item.title}</h1>
                 <span className="home-slider-date">{item.release_date} | </span>
