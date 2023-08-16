@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade,EffectCoverflow, Autoplay, Pagination, Navigation, FreeMode } from "swiper";
+import {
+  EffectFade,
+  EffectCoverflow,
+  Autoplay,
+  Pagination,
+  Navigation,
+  FreeMode,
+} from "swiper";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -38,12 +45,13 @@ const home = () => {
             centeredSlides={true}
             autoplay={{
               delay: 4000,
-              disableOnInteraction:false,
+              disableOnInteraction: false,
             }}
             pagination={{
-             clickable:true
+              clickable: true,
             }}
-            modules={[ Autoplay, Pagination]}
+            modules={[Autoplay, Pagination]}
+            className="main-swiper"
           >
             {movies?.results.slice(0, 10).map((item, index) => (
               <SwiperSlide key={index}>
@@ -52,19 +60,23 @@ const home = () => {
                   src={IMG_URL + item.backdrop_path}
                   onClick={() => navigate(`/${item.id}`)}
                 />
-                <h1 className="home-slider-h1 ">{item.title}</h1>
-                <span className="home-slider-date">{item.release_date} | </span>
-                <span className="home-slider-lan">
-                  {item.original_language}{" "}
-                </span>
-                <Rating
-                  className="home-slider-rating"
-                  sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
-                  value={item.vote_average / 2}
-                  precision={0.5}
-                  readOnly
-                />
-                <p className="home-slider-p">{item.overview}</p>
+                <div className="home-slider-txt">
+                  <h1 className="home-slider-h1 ">{item.title}</h1>
+                  <span className="home-slider-date">
+                    {item.release_date} |{" "}
+                  </span>
+                  <span className="home-slider-lan">
+                    {item.original_language}{" "}
+                  </span>
+                  <Rating
+                    className="home-slider-rating"
+                    sx={{ fontSize: { xs: "0.7rem", md: "1.5rem" } }}
+                    value={item.vote_average / 2}
+                    precision={0.5}
+                    readOnly
+                  />
+                  <p className="home-slider-p">{item.overview}</p>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
